@@ -1,12 +1,23 @@
+// importa a biblioteca material design do flutter
+// essa biblioteca disponibiliza componentes visuais como
+// Scaffold, AppBar, Text, Column, Row, Icon, Container e outros
+
 import 'package:flutter/material.dart';
 
 // Tela de Perfil que representa o perfil
 
 // StatelessWidget é usando quando as informações do proprio widget não precisa mudar durante a interação
 class PerfilScreen extends StatelessWidget {
+  // super.key encaminha a chave do widget para o construtor da classe pai (StatelessWidget)
+
+  //A key ajuda o Flutter a identificar widgets durante a atualização da interface
   const PerfilScreen({super.key});
 
+  // @override indica que estamos sobrescrevendo um metodo que ja existe na classe pai
   @override
+  // o metodo build é responsavel por construir a interface visual do widget
+  // widget representa o tipo de retorno do metodo
+  // BuilContext context fornece informações sobre a posição do widget na arvore de widgets
   Widget build(BuildContext context) {
     // Scaffold fornece a estrutura basica de uma tela Material Design
     return Scaffold(
@@ -73,6 +84,8 @@ class PerfilScreen extends StatelessWidget {
             const SizedBox(height: 24),
 
             Container(
+              margin: const EdgeInsets.only(bottom: 12),
+
               // epaçamento interno ( espaçamento dentro da nossa caixa)
               padding: const EdgeInsets.all(16),
 
@@ -84,7 +97,75 @@ class PerfilScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Row(
-                children: [Icon(Icons.email), Text('samira@emaiil.com')],
+                children: [
+                  Icon(Icons.email, size: 28),
+                  SizedBox(width: 12),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'E-mail',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Text('samira@emaiil.com'),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 12),
+
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.deepPurple.shade50,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: const Row(
+                children: [
+                  Icon(Icons.phone, size: 28),
+                  SizedBox(width: 12),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Telefone',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Text('(11) 99999-9999'),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 24),
+            const Text(
+              'Tecnologias',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 12),
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.grey.shade200,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [Text('Flutter'), Text('React'), Text('Node.js')],
+              ),
+            ),
+            const SizedBox(height: 24),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Editar perfil pressionado')),
+                  );
+                },
+                child: const Text('Editar perfil'),
               ),
             ),
           ],
