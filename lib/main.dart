@@ -1,4 +1,5 @@
-import 'package:aplicacao_flutter/screens/aparencia_screens.dart';
+// import 'package:aplicacao_flutter/screens/aparencia_screens.dart';
+import 'package:aplicacao_flutter/screens/perfil_screen.dart';
 // import 'package:aplicacao_flutter/screens/perfil_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -52,7 +53,8 @@ class _MyAppState extends State<MyApp> {
       // o valor do estado determina se MaterialApp usa theme ou darkTheme
       themeMode: modoAtual,
 
-      home: AparenciaScreens(modoAtual: modoAtual, aoAlterarTema: alterarTema),
+      // home: AparenciaScreens(modoAtual: modoAtual, aoAlterarTema: alterarTema),
+      home: PerfilScreen(),
     );
   }
 }

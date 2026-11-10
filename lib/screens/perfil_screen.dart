@@ -2,6 +2,8 @@
 // essa biblioteca disponibiliza componentes visuais como
 // Scaffold, AppBar, Text, Column, Row, Icon, Container e outros
 
+import 'package:aplicacao_flutter/screens/catalogo_screen.dart';
+import 'package:aplicacao_flutter/widgets/info_card.dart';
 import 'package:flutter/material.dart';
 
 // Tela de Perfil que representa o perfil
@@ -26,6 +28,47 @@ class PerfilScreen extends StatelessWidget {
           'Meu perfil',
           // estilizando o nosso titulo
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true, // centralizar o titulo do nosso app
+      ),
+
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+
+          children: [
+            const DrawerHeader(
+              child: Text(
+                'MeuPerfil',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+            ),
+
+            // Opção para permanecer  no Perfil
+            ListTile(
+              leading: const Icon(Icons.person),
+              title: const Text('Meu Perfil'),
+              onTap: () {
+                // Fechar o menu lateral
+                Navigator.pop(context);
+              },
+            ),
+
+            //Opção para abrir o catalogo
+            ListTile(
+              leading: const Icon(Icons.shopping_bag),
+              title: const Text('Catálogo'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const CatalogScreen(),
+                  ),
+                );
+              },
+            ),
+          ],
         ),
       ),
 
@@ -83,36 +126,37 @@ class PerfilScreen extends StatelessWidget {
 
             const SizedBox(height: 24),
 
-            Container(
-              margin: const EdgeInsets.only(bottom: 12),
+            // Container(
+            //   margin: const EdgeInsets.only(bottom: 12),
 
-              // epaçamento interno ( espaçamento dentro da nossa caixa)
-              padding: const EdgeInsets.all(16),
+            //   // epaçamento interno ( espaçamento dentro da nossa caixa)
+            //   padding: const EdgeInsets.all(16),
 
-              // Decoration controla a aparencia visual do container
-              decoration: BoxDecoration(
-                // cor de fundo
-                color: Colors.deepPurple.shade50,
-                // Arredonda os quatros cantos
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Row(
-                children: [
-                  Icon(Icons.email, size: 28),
-                  SizedBox(width: 12),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'E-mail',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      Text('samira@emaiil.com'),
-                    ],
-                  ),
-                ],
-              ),
-            ),
+            //   // Decoration controla a aparencia visual do container
+            //   decoration: BoxDecoration(
+            //     // cor de fundo
+            //     color: Colors.deepPurple.shade50,
+            //     // Arredonda os quatros cantos
+            //     borderRadius: BorderRadius.circular(12),
+            //   ),
+            //   child: Row(
+            //     children: [
+            //       Icon(Icons.email, size: 28),
+            //       SizedBox(width: 12),
+            //       Column(
+            //         crossAxisAlignment: CrossAxisAlignment.start,
+            //         children: [
+            //           Text(
+            //             'E-mail',
+            //             style: TextStyle(fontWeight: FontWeight.bold),
+            //           ),
+            //           Text('samira@emaiil.com'),
+            //         ],
+            //       ),
+            //     ],
+            //   ),
+            // ),
+            const InfoCard(text: 'samira@email.com', label: 'E-mail', icon: Icons.email,),
 
             const SizedBox(height: 12),
 
@@ -140,6 +184,7 @@ class PerfilScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 24),
+
             const Text(
               'Tecnologias',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
