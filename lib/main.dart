@@ -1,5 +1,5 @@
-import 'package:aplicacao_flutter/mainAntiga.dart';
-import 'package:aplicacao_flutter/screens/perfil_screen.dart';
+import 'package:aplicacao_flutter/screens/aparencia_screens.dart';
+// import 'package:aplicacao_flutter/screens/perfil_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -35,7 +35,7 @@ class _MyAppState extends State<MyApp> {
         // ColorScheme.fromSeed ele gera as paletas apartir de uma cor base
         colorScheme: ColorScheme.fromSeed(
           // ele detarmina a principal cor da paleta
-          seedColor: Colors.teal,
+          seedColor: Colors.indigo,
           // gera as cores adquadas de acordo com o modo ( claro ou escuro)
           brightness: Brightness.light,
         ),
@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
 
       darkTheme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.teal,
+          seedColor: Colors.indigo,
           brightness: Brightness.dark,
         ),
       ),
@@ -52,7 +52,7 @@ class _MyAppState extends State<MyApp> {
       // o valor do estado determina se MaterialApp usa theme ou darkTheme
       themeMode: modoAtual,
 
-      home: const PerfilScreen(),
+      home: AparenciaScreens(modoAtual: modoAtual, aoAlterarTema: alterarTema),
     );
   }
 }
